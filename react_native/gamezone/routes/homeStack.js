@@ -4,6 +4,7 @@ import Home from "../screens/home";
 import ReviewDetails from "../screens/reviewDetail";
 import Header from "../shared/header";
 import React from "react";
+import { Image, StyleSheet } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,15 @@ export default function HomeNavigator() {
             headerTitle: () => (
               <Header navigation={navigation} title="GameZone" />
             ),
+            headerBackground: () => (
+              <Image
+                source={require("../assets/game_bg.png")}
+                style={[StyleSheet.absoluteFill]}
+              />
+            ),
+            headerStyle: {
+              backgroundColor: "transparent",
+            },
           };
         }}
       />
