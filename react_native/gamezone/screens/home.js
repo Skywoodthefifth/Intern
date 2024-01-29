@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -13,34 +13,57 @@ import Card from "../shared/card";
 import { MaterialIcons } from "@expo/vector-icons";
 import ReviewForm from "./reviewForm";
 
+import { useFocusEffect } from "@react-navigation/native";
+
 export default function Home({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [reviews, setReviews] = useState([
-    {
-      title: "Zelda, Breath of Fresh Air",
-      rating: 5,
-      body: "lorem ipsum",
-      key: "1",
-    },
-    {
-      title: "Gotta Catch Them All (again)",
-      rating: 4,
-      body: "lorem ipsum",
-      key: "2",
-    },
-    {
-      title: 'Not So "Final" Fantasy',
-      rating: 3,
-      body: "lorem ipsum",
-      key: "3",
-    },
-  ]);
+  const [reviews, setReviews] = useState();
+
+  const url = "http://192.168.50.113:8000/reviews/";
+  const token = "NKov2svtSeWNKIRTHkXdaSgKW7xstW";
+
+  const getReviewsFromApi = () => {
+    fetch(url, {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setReviews(json.results);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    getReviewsFromApi();
+  }, []);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getReviewsFromApi();
+    })
+  );
 
   const addReview = (review) => {
-    review.key = Math.random().toString();
-    setReviews((currentReviews) => {
-      return [review, ...currentReviews];
+    fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(review),
+    }).catch((error) => {
+      console.error(error);
     });
+
+    getReviewsFromApi();
+
     setModalOpen(false);
   };
 
@@ -68,6 +91,7 @@ export default function Home({ navigation }) {
       />
 
       <FlatList
+        keyExtractor={(item) => item.id}
         data={reviews}
         renderItem={({ item }) => (
           <Pressable onPress={() => navigation.navigate("Details", { item })}>
