@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -13,34 +13,63 @@ import Card from "../shared/card";
 import { MaterialIcons } from "@expo/vector-icons";
 import ReviewForm from "./reviewForm";
 
+import { useFocusEffect } from "@react-navigation/native";
+
+import { baseURL } from "../shared/Apiconfig";
+import * as SecureStore from "expo-secure-store";
+
 export default function Home({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [reviews, setReviews] = useState([
-    {
-      title: "Zelda, Breath of Fresh Air",
-      rating: 5,
-      body: "lorem ipsum",
-      key: "1",
-    },
-    {
-      title: "Gotta Catch Them All (again)",
-      rating: 4,
-      body: "lorem ipsum",
-      key: "2",
-    },
-    {
-      title: 'Not So "Final" Fantasy',
-      rating: 3,
-      body: "lorem ipsum",
-      key: "3",
-    },
-  ]);
+  const [reviews, setReviews] = useState();
+
+  const getReviewsFromApi = () => {
+    let token = SecureStore.getItem("token");
+    token = JSON.parse(token);
+
+    fetch(`${baseURL}/reviews/`, {
+      headers: {
+        Authorization: `Bearer ${token.access_token}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setReviews(json.results);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getReviewsFromApi();
+    }, [])
+  );
 
   const addReview = (review) => {
-    review.key = Math.random().toString();
-    setReviews((currentReviews) => {
-      return [review, ...currentReviews];
-    });
+    let token = SecureStore.getItem("token");
+    token = JSON.parse(token);
+
+    fetch(`${baseURL}/reviews/`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token.access_token}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((response) => {
+        if (response) {
+          getReviewsFromApi();
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
     setModalOpen(false);
   };
 
@@ -68,6 +97,7 @@ export default function Home({ navigation }) {
       />
 
       <FlatList
+        keyExtractor={(item) => item.id}
         data={reviews}
         renderItem={({ item }) => (
           <Pressable onPress={() => navigation.navigate("Details", { item })}>
