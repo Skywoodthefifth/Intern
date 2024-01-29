@@ -15,17 +15,20 @@ import ReviewForm from "./reviewForm";
 
 import { useFocusEffect } from "@react-navigation/native";
 
+import { baseURL } from "../shared/Apiconfig";
+import * as SecureStore from "expo-secure-store";
+
 export default function Home({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [reviews, setReviews] = useState();
 
-  const url = "http://192.168.50.113:8000/reviews/";
-  const token = "NKov2svtSeWNKIRTHkXdaSgKW7xstW";
-
   const getReviewsFromApi = () => {
-    fetch(url, {
+    let token = SecureStore.getItem("token");
+    token = JSON.parse(token);
+
+    fetch(`${baseURL}/reviews/`, {
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: `Bearer ${token.access_token}`,
         Accept: "application/json",
         "Content-Type": "application/json",
       },
@@ -39,30 +42,33 @@ export default function Home({ navigation }) {
       });
   };
 
-  useEffect(() => {
-    getReviewsFromApi();
-  }, []);
-
   useFocusEffect(
     React.useCallback(() => {
       getReviewsFromApi();
-    })
+    }, [])
   );
 
   const addReview = (review) => {
-    fetch(url, {
+    let token = SecureStore.getItem("token");
+    token = JSON.parse(token);
+
+    fetch(`${baseURL}/reviews/`, {
       method: "POST",
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: `Bearer ${token.access_token}`,
         Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(review),
-    }).catch((error) => {
-      console.error(error);
-    });
-
-    getReviewsFromApi();
+    })
+      .then((response) => {
+        if (response) {
+          getReviewsFromApi();
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     setModalOpen(false);
   };

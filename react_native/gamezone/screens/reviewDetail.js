@@ -14,20 +14,23 @@ import Card from "../shared/card";
 import { MaterialIcons } from "@expo/vector-icons";
 import ReviewUpdateForm from "./reviewUpdateForm";
 
+import { baseURL } from "../shared/Apiconfig";
+import * as SecureStore from "expo-secure-store";
+
 export default function ReviewDetails({ route, navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
 
   const { item } = route.params;
   const rating = item.rating;
 
-  const url = "http://192.168.50.113:8000/reviews";
-  const token = "NKov2svtSeWNKIRTHkXdaSgKW7xstW";
-
   const onDelete = () => {
-    fetch(`${url}/${item.id}/`, {
+    let token = SecureStore.getItem("token");
+    token = JSON.parse(token);
+
+    fetch(`${baseURL}/reviews/${item.id}/`, {
       method: "DELETE",
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: `Bearer ${token.access_token}`,
       },
     })
       .then((res) => {
@@ -41,15 +44,18 @@ export default function ReviewDetails({ route, navigation }) {
   };
 
   const updateReview = (review) => {
+    let token = SecureStore.getItem("token");
+    token = JSON.parse(token);
+
     const formData = new FormData();
     formData.append("title", review.title);
     formData.append("body", review.body);
     formData.append("rating", review.rating);
 
-    fetch(`${url}/${item.id}/`, {
+    fetch(`${baseURL}/reviews/${item.id}/`, {
       method: "PUT",
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: `Bearer ${token.access_token}`,
       },
       body: formData,
     })
