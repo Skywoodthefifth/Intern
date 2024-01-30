@@ -23,47 +23,56 @@ export default function ReviewDetails({ route, navigation }) {
   const { item } = route.params;
   const rating = item.rating;
 
-  const onDelete = () => {
-    let token = SecureStore.getItem("token");
-    token = JSON.parse(token);
+  const onDelete = async () => {
+    try {
+      const keyItem = await SecureStore.getItemAsync("token");
+      const token = JSON.parse(keyItem);
 
-    fetch(`${baseURL}/reviews/${item.id}/`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token.access_token}`,
-      },
-    })
-      .then((res) => {
-        if (res) {
+      if (token) {
+        const response = await fetch(`${baseURL}/reviews/${item.id}/`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token.access_token}`,
+          },
+        });
+
+        if (response.ok) {
+          console.log("Review deleted successfully");
           navigation.navigate("Home");
         }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const updateReview = (review) => {
-    let token = SecureStore.getItem("token");
-    token = JSON.parse(token);
+  const updateReview = async (review) => {
+    try {
+      const keyItem = await SecureStore.getItemAsync("token");
+      const token = JSON.parse(keyItem);
 
-    const formData = new FormData();
-    formData.append("title", review.title);
-    formData.append("body", review.body);
-    formData.append("rating", review.rating);
+      if (token) {
+        const formData = new FormData();
+        formData.append("title", review.title);
+        formData.append("body", review.body);
+        formData.append("rating", review.rating);
 
-    fetch(`${baseURL}/reviews/${item.id}/`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token.access_token}`,
-      },
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-      })
-      .catch((error) => error);
+        const response = await fetch(`${baseURL}/reviews/${item.id}/`, {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token.access_token}`,
+          },
+          body: formData,
+        });
+        if (response.ok) {
+          const json = await response.json();
+          console.log("Review updated successfully");
+          console.log(json);
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
 
     setModalOpen(false);
   };

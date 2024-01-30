@@ -22,24 +22,29 @@ export default function Home({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [reviews, setReviews] = useState();
 
-  const getReviewsFromApi = () => {
-    let token = SecureStore.getItem("token");
-    token = JSON.parse(token);
+  const getReviewsFromApi = async () => {
+    try {
+      const keyItem = await SecureStore.getItemAsync("token");
+      const token = JSON.parse(keyItem);
 
-    fetch(`${baseURL}/reviews/`, {
-      headers: {
-        Authorization: `Bearer ${token.access_token}`,
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        setReviews(json.results);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      if (token) {
+        const response = await fetch(`${baseURL}/reviews/`, {
+          headers: {
+            Authorization: `Bearer ${token.access_token}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (response.ok) {
+          console.log("Get all reviews successfully");
+          const json = await response.json();
+          setReviews(json.results);
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useFocusEffect(
@@ -48,27 +53,30 @@ export default function Home({ navigation }) {
     }, [])
   );
 
-  const addReview = (review) => {
-    let token = SecureStore.getItem("token");
-    token = JSON.parse(token);
+  const addReview = async (review) => {
+    try {
+      const keyItem = await SecureStore.getItemAsync("token");
+      const token = JSON.parse(keyItem);
 
-    fetch(`${baseURL}/reviews/`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token.access_token}`,
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(review),
-    })
-      .then((response) => {
-        if (response) {
-          getReviewsFromApi();
+      if (token) {
+        const response = await fetch(`${baseURL}/reviews/`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token.access_token}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(review),
+        });
+
+        if (response.ok) {
+          console.log("Review created successfully");
+          await getReviewsFromApi();
         }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      }
+    } catch (error) {
+      console.error(error);
+    }
 
     setModalOpen(false);
   };
