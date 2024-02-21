@@ -24,7 +24,7 @@ const reviewSchema = yup.object({
 import { baseURL } from "../shared/Apiconfig";
 
 export default function Login({ navigation }) {
-  const login = (values) => {
+  const login = async (values) => {
     try {
       const formData = new FormData();
       formData.append("grant_type", "password");
@@ -36,27 +36,23 @@ export default function Login({ navigation }) {
         "mBvCygrNi8vohgEl7U0f2gF8STsLuFEHQsKgC999UtOi4R7IS2UgeRJpmYgCYbD5jd8X2FIo9Q6r25px9f4szPz2ZZE4hQk1iHxnwiIEmJ5sP2apAz32wPRNiJvp39ae"
       );
 
-      fetch(`${baseURL}/o/token/`, {
+      const response = await fetch(`${baseURL}/o/token/`, {
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
           Accept: "application/json",
         },
         body: formData,
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-        })
-        .then((data) => {
-          console.log(data);
-          SecureStore.setItem("token", JSON.stringify(data));
-          navigation.navigate("HomeNavigator");
-        });
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Login successful");
+        console.log(data);
+        await SecureStore.setItemAsync("token", JSON.stringify(data));
+        navigation.navigate("HomeNavigator");
+      }
     } catch (error) {
       console.error("Login error:", error);
-      throw error;
     }
   };
 
