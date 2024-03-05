@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c21e0440-ed14-4632-afc3-4b6d68ddf25e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/.bundle/config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/.prettierrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/.watchmanconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/Gemfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/__tests__/App.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/debug.keystore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/debug/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/java/com/rn_cli/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/java/com/rn_cli/MainApplication.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/drawable/rn_edit_text_material.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/android/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/.xcode.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/Podfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/RN_CLI.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/RN_CLI.xcodeproj/xcshareddata/xcschemes/RN_CLI.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/RN_CLI/AppDelegate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/RN_CLI/AppDelegate.mm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/RN_CLI/Images.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/RN_CLI/Images.xcassets/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/RN_CLI/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/RN_CLI/LaunchScreen.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/RN_CLI/main.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/RN_CLITests/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/ios/RN_CLITests/RN_CLITests.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/jest.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/metro.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RN_CLI/tsconfig.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2cyRC0bksD5ByJNpxReIn32Aa4R" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/code/Intern/react_native/TKeeper/android"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c21e0440-ed14-4632-afc3-4b6d68ddf25e" name="Changes" comment="" />
+      <created>1709081703319</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709081703319</updated>
+    </task>
+    <servers />
+  </component>
+</project>

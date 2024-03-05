@@ -1,0 +1,33 @@
+{
+    "name": "rtn-image-picker",
+    "version": "0.0.1",
+    "description": "Select an image from local files",
+    "react-native": "js/index",
+    "source": "js/index",
+    "files": [
+        "js",
+        "android",
+        "!android/build",
+        "!**/__tests__",
+        "!**/__fixtures__",
+        "!**/__mocks__"
+    ],
+    "keywords": [
+        "react-native",
+        "android"
+    ],
+    "license": "MIT",
+    "devDependencies": {},
+    "peerDependencies": {
+        "react": "*",
+        "react-native": "*"
+    },
+    "codegenConfig": {
+        "name": "RTNImagePickerSpec",
+        "type": "modules",
+        "jsSrcsDir": "js",
+        "android": {
+            "javaPackageName": "com.rtnimagepicker"
+        }
+    }
+}
