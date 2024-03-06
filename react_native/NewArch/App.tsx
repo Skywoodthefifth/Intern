@@ -7,8 +7,9 @@
 import React from 'react';
 import {useState} from 'react';
 import {Text, Button, Image, StyleSheet, View} from 'react-native';
-import RTNCalculator from 'rtn-calculator/js/NativeCalculator';
-import RTNImagePicker from 'rtn-image-picker/js/NativeImagePicker';
+// import RTNCalculator from 'rtn-calculator/js/NativeCalculator';
+// import RTNImagePicker from 'rtn-image-picker/js/NativeImagePicker';
+import MyLibraryTruong from 'react-native-my-library-truong';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,17 +31,20 @@ const styles = StyleSheet.create({
 });
 
 const App: () => JSX.Element = () => {
-  const [result, setResult] = useState<number | null>(null);
+  // const [result, setResult] = useState<number | null>(null);
+  // const [result_2, setResult_2] = useState<number | null>(null);
+  const [result_3, setResult_3] = useState<number | null>(null);
   const [ImageUri, setImageUri] = useState<string | null>(null);
 
   async function onSubmit() {
     try {
-      const uri = await RTNImagePicker?.pickImage();
+      // const uri = await RTNImagePicker?.pickImage();
+
+      const uri = await MyLibraryTruong?.pickImage();
 
       if (uri) {
         console.log(`Image Data: ${uri}`);
         setImageUri(uri);
-        console.log(`ImageUri: ${ImageUri}`);
       }
     } catch (error) {
       console.error(error);
@@ -48,36 +52,20 @@ const App: () => JSX.Element = () => {
   }
 
   async function onPressHandler() {
-    const value = await RTNCalculator?.add(3, 7);
-    setResult(value ?? null);
+    // const value = await RTNCalculator?.add(3, 7);
+    // setResult(value ?? null);
+    // const value_2 = await RTNCalculator?.multiply(5, 121);
+    // setResult_2(value_2 ?? null);
+    const value_3 = await MyLibraryTruong?.multiply(161, 121);
+    setResult_3(value_3 ?? null);
     await onSubmit();
   }
 
   return (
-    // <View style={{flex: 1, alignSelf: 'center'}}>
-    //   <Text style={{alignSelf: 'center', color: 'white'}}>
-    //     3+7={result ?? '??'}
-    //   </Text>
-    //   <Button
-    //     title="Press me"
-    //     onPress={async () => {
-    //       const value = await RTNCalculator?.add(3, 7);
-    //       setResult(value ?? null);
-    //       await onSubmit();
-    //     }}
-    //   />
-
-    //   {ImageUri && (
-    //     <Image
-    //       source={{
-    //         uri: ImageUri,
-    //       }}
-    //     />
-    //   )}
-    // </View>
-
     <View style={styles.container}>
-      <Text style={styles.text}>3+7={result ?? '??'}</Text>
+      {/* <Text style={styles.text}>3+7={result ?? '??'}</Text>
+      <Text style={styles.text}>5*121={result_2 ?? '??'}</Text> */}
+      <Text style={styles.text}>My library: 161*121={result_3 ?? '??'}</Text>
       <Button title="Press Me" onPress={onPressHandler} />
       {ImageUri && (
         <Image
