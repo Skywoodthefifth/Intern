@@ -14,7 +14,8 @@
     "react-native": "0.73.5",
     "rtn-calculator": "./RTNCalculator",
     "rtn-image-picker": "./RTNImagePicker",
-    "react-native-my-library-truong": "link:./modules\\my-library-truong"
+    "react-native-my-library-truong": "link:./modules\\my-library-truong",
+    "react-native-my-component": "link:./modules\\my-component"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

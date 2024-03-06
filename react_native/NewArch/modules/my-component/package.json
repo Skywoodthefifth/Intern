@@ -1,0 +1,14 @@
+{
+  "name": "react-native-my-component",
+  "version": "0.0.0",
+  "description": "A test component for learning",
+  "main": "src/index",
+  "codegenConfig": {
+    "name": "RNMyComponentViewSpec",
+    "type": "components",
+    "jsSrcsDir": "src"
+  },
+  "author": " <> ()",
+  "license": "UNLICENSED",
+  "homepage": "#readme"
+}

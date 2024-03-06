@@ -10,6 +10,7 @@ import {Text, Button, Image, StyleSheet, View} from 'react-native';
 // import RTNCalculator from 'rtn-calculator/js/NativeCalculator';
 // import RTNImagePicker from 'rtn-image-picker/js/NativeImagePicker';
 import MyLibraryTruong from 'react-native-my-library-truong';
+import {MyComponentView} from 'react-native-my-component';
 
 const styles = StyleSheet.create({
   container: {
@@ -65,6 +66,10 @@ const App: () => JSX.Element = () => {
     <View style={styles.container}>
       {/* <Text style={styles.text}>3+7={result ?? '??'}</Text>
       <Text style={styles.text}>5*121={result_2 ?? '??'}</Text> */}
+      <MyComponentView
+        text="Hello World! From Fabric"
+        style={{width: '100%', height: 30}}
+      />
       <Text style={styles.text}>My library: 161*121={result_3 ?? '??'}</Text>
       <Button title="Press Me" onPress={onPressHandler} />
       {ImageUri && (
