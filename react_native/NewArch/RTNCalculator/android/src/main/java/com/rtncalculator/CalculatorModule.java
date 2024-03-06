@@ -29,4 +29,7 @@ public class CalculatorModule extends NativeCalculatorSpec {
     public void add(double a, double b, Promise promise) {
         promise.resolve(a + b);
     }
+
+    @Override
+    public void multiply(double a, double b, Promise promise) { promise.resolve(a * b); }
 }

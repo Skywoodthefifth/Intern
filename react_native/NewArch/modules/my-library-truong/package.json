@@ -1,0 +1,14 @@
+{
+  "name": "react-native-my-library-truong",
+  "version": "0.0.1",
+  "description": "A test package for learning",
+  "main": "src/index",
+  "codegenConfig": {
+    "name": "RNMyLibraryTruongSpec",
+    "type": "modules",
+    "jsSrcsDir": "src"
+  },
+  "author": " <> ()",
+  "license": "UNLICENSED",
+  "homepage": "#readme"
+}
