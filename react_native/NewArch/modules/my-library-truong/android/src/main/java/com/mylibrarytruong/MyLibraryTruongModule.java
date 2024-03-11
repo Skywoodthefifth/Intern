@@ -1,22 +1,16 @@
 package com.mylibrarytruong;
 
-import androidx.annotation.NonNull;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.facebook.react.bridge.NativeModule;
+import androidx.annotation.NonNull;
+
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.BaseActivityEventListener;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.module.annotations.ReactModule;
-import com.facebook.react.bridge.ReactContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
 
-@ReactModule(name = MyLibraryTruongModule.NAME)
 public class MyLibraryTruongModule extends NativeMyLibraryTruongSpec {
   public static final String NAME = "MyLibraryTruong";
 

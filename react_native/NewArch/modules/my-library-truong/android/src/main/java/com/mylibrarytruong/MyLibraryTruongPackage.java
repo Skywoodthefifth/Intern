@@ -1,5 +1,6 @@
 package com.mylibrarytruong;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.NativeModule;
@@ -15,9 +16,9 @@ public class MyLibraryTruongPackage extends TurboReactPackage {
 
   @Nullable
   @Override
-  public NativeModule getModule(String name, ReactApplicationContext reactContext) {
+  public NativeModule getModule(String name, @NonNull ReactApplicationContext reactContext) {
     if (name.equals(MyLibraryTruongModule.NAME)) {
-      return new MyLibraryTruongModule(reactContext);
+      return (NativeModule) new MyLibraryTruongModule(reactContext);
     } else {
       return null;
     }
